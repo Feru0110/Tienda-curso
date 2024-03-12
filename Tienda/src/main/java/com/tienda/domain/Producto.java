@@ -1,49 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.tienda.domain;
 
-/**
- *
- * @author feru0
- */
-import jakarta.persistence.*;​
-import java.io.Serializable;​
-import lombok.Data;​
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "producto")
 
 
-@Data​
-@Entity​
-@Table(name="producto")​
-public class Producto implements Serializable {​
-    private static final long serialVersionUID = 1L;​
-
-    @Id​
-    @GeneratedValue(strategy = GenerationType.IDENTITY)​
-    @Column(name="id_producto")​
-    private Long idProducto;    ​
-    private String descripcion;​
-    private String detalle;​
-    private double precio;​
-    private int existencias;​
-    private String rutaImagen;​
-    private boolean activo;​
-
-    @ManyToOne​
-    @JoinColumn(name="id_categoria")​
-    Categoria categoria;​
-
-    public Producto() {        ​
-    }​
 
 
-    public Producto(String descripcion, String detalle, double precio, int existencias, String imagen, boolean activo) {​
-        this.descripcion = descripcion;​
-        this.detalle = detalle;​
-        this.precio = precio;​
-        this.existencias = existencias;​
-        this.rutaImagen = imagen;​
-        this.activo = activo;​
-    }​
+public class Producto implements Serializable { //serializacion porque se va almacenar ciertos datos en el disco
+    
+@ManyToOne
+@JoinColumn(name="id_categoria")
+Categoria categoria;
+
+    private static final long serialVersionUID = 1L; //para poder hacer el ciclo de la sumatoria de la producto.
+
+    @Id //id producto es la llave de la tabla producto. 
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Los valores generados que estrategia usan, identico a la BD 
+    @Column(name = "id_producto") //decir cual es el nombre en la base de datos. Se hace la asociación 
+    private long idProducto;
+    private long idCategoria;
+    private String descripcion;
+    private String detalle;
+    private double precio;
+    private int existencias;
+    private String rutaImagen;
+    private boolean activo;
+
+    public Producto() {
+    }
+
+    public Producto(String descripcion, boolean activo) {
+        this.descripcion = descripcion;
+        this.activo = activo;
+    }
+
+
 }

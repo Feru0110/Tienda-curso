@@ -28,8 +28,6 @@ public class Categoria implements Serializable { //serializacion porque se va al
         this.descripcion = descripcion;
         this.activo = activo;
     }
-    @OneToMany
-    @JoinColumn(name = "id_categoria")
-    List<Producto> productos;
+
 
 }

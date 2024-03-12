@@ -1,7 +1,6 @@
 package com.tienda.service.impl;
 
 import com.tienda.dao.ProductoDao;
-import com.tienda.domain.Categoria;
 import com.tienda.domain.Producto;
 import com.tienda.service.ProductoService;
 import java.util.List;
@@ -42,25 +41,5 @@ public class ProductoServiceImpl implements ProductoService {
     @Transactional
     public void delete(Producto producto) {
         productoDao.delete(producto);
-    }
-
-    @Override
-    public List<Object> getProductos(boolean par) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Object getProducto(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void saveProducto(Object producto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void deleteProducto(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
