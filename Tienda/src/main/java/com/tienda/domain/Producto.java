@@ -8,14 +8,7 @@ import lombok.Data;
 @Entity
 @Table(name = "producto")
 
-
-
-
 public class Producto implements Serializable { //serializacion porque se va almacenar ciertos datos en el disco
-    
-@ManyToOne
-@JoinColumn(name="id_categoria")
-Categoria categoria;
 
     private static final long serialVersionUID = 1L; //para poder hacer el ciclo de la sumatoria de la producto.
 
@@ -23,13 +16,17 @@ Categoria categoria;
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Los valores generados que estrategia usan, identico a la BD 
     @Column(name = "id_producto") //decir cual es el nombre en la base de datos. Se hace la asociación 
     private long idProducto;
-    private long idCategoria;
+//    private long idCategoria; esto lo comentamos por que solo ocupamos el foreign key
     private String descripcion;
     private String detalle;
     private double precio;
     private int existencias;
     private String rutaImagen;
     private boolean activo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    Categoria categoria;
 
     public Producto() {
     }
@@ -38,6 +35,5 @@ Categoria categoria;
         this.descripcion = descripcion;
         this.activo = activo;
     }
-
 
 }
